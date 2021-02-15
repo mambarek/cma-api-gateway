@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: cma-api-gateway-deployment
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            component: cma-api-gateway
+    template:
+        metadata:
+            labels:
+                component: cma-api-gateway
+        spec:
+            containers:
+                - name: cma-api-gateway
+                  image: mmbarek/cma-api-gateway
+                  ports:
+                    - containerPort: 8888
